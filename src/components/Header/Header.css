@@ -1,0 +1,14 @@
+.header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__nav-container {
+  display: flex;
+  list-style-type: none;
+  gap: 50px;
+}
+
+.header__nav-home-link {
+  margin: 0;
+}
