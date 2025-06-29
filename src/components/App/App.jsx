@@ -1,6 +1,6 @@
+import "./App.css";
 import { useState } from "react";
 import Header from "../Header/Header";
-import "./App.css";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import Footer from "../Footer/Footer";
@@ -11,7 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
