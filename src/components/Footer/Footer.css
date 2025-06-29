@@ -1,10 +1,16 @@
 .footer {
   display: flex;
   justify-content: space-between;
+  padding: 26px 104px 23px;
+}
+
+.footer__paragraph {
+  color: rgba(182, 188, 191, 1);
 }
 
 .footer__links {
   display: flex;
   gap: 10px;
   list-style-type: none;
+  text-decoration: none;
 }

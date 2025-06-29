@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Roboto-slab;
+  src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
+}
+
+.articles {
+  padding: 40px 104px;
+}
+
+.articles__paragraph {
+  color: rgba(26, 27, 34, 0.5);
+  margin: 0 0 28px;
+}
+
+.articles__heading {
+  font-family: "Roboto-slab", "Times New Roman", Times, serif;
+  font-size: 40px;
+  line-height: 46px;
+  width: 530px;
+}
+
+.articles__keywords {
+  margin: 16px 0 50px;
+}
+
+.card__list {
+  padding: 0;
+  background-color: rgba(245, 246, 247, 1);
+}

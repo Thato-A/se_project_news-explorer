@@ -1,6 +1,13 @@
 import About from "../About/About";
+import RegisterModal from "../RegisterModal/RegisterModal";
+
 function Main() {
-  return <About />;
+  return (
+    <>
+      <RegisterModal />
+      <About />
+    </>
+  );
 }
 
 export default Main;

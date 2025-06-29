@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Roboto-slab";
+  src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
+}
+
+.about {
+  display: flex;
+  gap: 20px;
+  padding: 50px 104px;
+}
+
+.about__image {
+  width: 320px;
+  height: 350px;
+  border-radius: 100%;
+}
+
+.about__title {
+  font-family: "Roboto-slab", "Times New Roman", serif;
+  padding: 20px 0 0 20px;
+}

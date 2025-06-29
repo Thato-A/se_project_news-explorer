@@ -1,3 +1,4 @@
+import "./SearchForm.css";
 function SearchForm() {
   return (
     <>
@@ -7,13 +8,18 @@ function SearchForm() {
           Find the latest news on any topic and save them in your personal
           account
         </p>
-      </div>
-
-      <div className="search__container">
-        <form className="search__form">
-          <input type="text" placeholder="Enter topic" />
-          <button type="submit">Search</button>
-        </form>
+        <div className="search__container">
+          <form className="search__form">
+            <input
+              className="search__input"
+              type="text"
+              placeholder="Enter topic"
+            />
+            <button className="search__btn" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Roboto-slab;
+  src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
+}
+
+.search__results {
+  padding: 40px 104px;
+  background-color: rgba(245, 246, 247, 1);
+}
+
+.search__results-title {
+  font-family: "Roboto-slab", "Times New Roman", Times, serif;
+  margin: 0 0 26px;
+  font-size: 40px;
+}
+
+.search__results-btn {
+  display: flex;
+  margin: 56px auto 20px;
+  width: 210px;
+  height: 50px;
+  border-radius: 100px;
+  padding: 16px 70px;
+  border: none;
+  background-color: rgba(232, 232, 232, 1);
+}

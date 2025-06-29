@@ -1,7 +1,9 @@
 import SearchForm from "../SearchForm/SearchForm";
 import "./Header.css";
+import LogOut from "../../assets/logout.svg";
+import { Link } from "react-router-dom";
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn, onRegisterClick }) {
   return (
     <header className="header">
       <div className="header__container">
@@ -14,12 +16,21 @@ function Header({ isLoggedIn }) {
                 <p>Home</p>
               </li>
 
-              <li className="header__nav-news-link">
-                <p>Saved articles</p>
+              <li>
+                <Link to="/saved-articles" className="header__nav-news-link">
+                  <p>Saved articles</p>
+                </Link>
               </li>
 
               <li>
-                <button className="header__nav-btn">Lily</button>
+                <button className="header__nav-logout">
+                  Lily
+                  <img
+                    src={LogOut}
+                    alt="logout icon"
+                    className="header__nav-icon"
+                  />
+                </button>
               </li>
             </ul>
           ) : (
@@ -29,7 +40,9 @@ function Header({ isLoggedIn }) {
               </li>
 
               <li>
-                <button className="header__nav-btn">Sign In</button>
+                <button className="header__nav-btn" onClick={onRegisterClick}>
+                  Sign In
+                </button>
               </li>
             </ul>
           )}
