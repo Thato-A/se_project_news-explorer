@@ -3,7 +3,7 @@ import "./Header.css";
 import LogOut from "../../assets/logout.svg";
 import { Link } from "react-router-dom";
 
-function Header({ isLoggedIn, onRegisterClick }) {
+function Header({ isLoggedIn, onRegisterClick, onSignOut }) {
   return (
     <header className="header">
       <div className="header__container">
@@ -13,7 +13,9 @@ function Header({ isLoggedIn, onRegisterClick }) {
           {isLoggedIn ? (
             <ul className="header__nav-container">
               <li className="header__nav-home-link">
-                <p>Home</p>
+                <Link to="/">
+                  <p>Home</p>
+                </Link>
               </li>
 
               <li>
@@ -23,7 +25,7 @@ function Header({ isLoggedIn, onRegisterClick }) {
               </li>
 
               <li>
-                <button className="header__nav-logout">
+                <button className="header__nav-logout" onClick={onSignOut}>
                   Lily
                   <img
                     src={LogOut}
@@ -49,7 +51,7 @@ function Header({ isLoggedIn, onRegisterClick }) {
         </nav>
       </div>
 
-      <SearchForm />
+      {/* <SearchForm /> */}
     </header>
   );
 }

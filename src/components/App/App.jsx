@@ -1,5 +1,5 @@
-import "./App.css";
 import { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
@@ -7,14 +7,13 @@ import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const openLoginModal = () => {
     setActiveModal("login");
@@ -28,6 +27,14 @@ function App() {
     setActiveModal("");
   };
 
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    setCurrentUser("");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
@@ -35,10 +42,11 @@ function App() {
           <Header
             isLoggedIn={isLoggedIn}
             onRegisterClick={openRegistrationModal}
+            onSignOut={handleSignOut}
           />
 
           <Routes>
-            <Route path="/" element={<Main />}></Route>
+            <Route path="/" element={<Main isLoggedIn={isLoggedIn} />}></Route>
 
             <Route
               path="/saved-articles"

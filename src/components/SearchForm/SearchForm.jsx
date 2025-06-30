@@ -1,5 +1,5 @@
 import "./SearchForm.css";
-function SearchForm() {
+function SearchForm({ handleSearch }) {
   return (
     <>
       <div className="search">
@@ -9,7 +9,7 @@ function SearchForm() {
           account
         </p>
         <div className="search__container">
-          <form className="search__form">
+          <form className="search__form" onSubmit={handleSearch}>
             <input
               className="search__input"
               type="text"

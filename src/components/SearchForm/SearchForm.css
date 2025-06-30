@@ -4,6 +4,7 @@
 }
 
 .search {
+  background-image: url("../../assets/Header-background.png");
   margin: 0 auto;
   position: relative;
   width: 600px;

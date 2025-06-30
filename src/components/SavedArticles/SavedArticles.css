@@ -20,10 +20,14 @@
 }
 
 .articles__keywords {
-  margin: 16px 0 50px;
+  margin: 16px 0 0;
+}
+
+.card__list-container {
+  padding: 0;
+  background-color: rgba(245, 246, 247, 1);
 }
 
 .card__list {
-  padding: 0;
-  background-color: rgba(245, 246, 247, 1);
+  padding: 62px 104px;
 }

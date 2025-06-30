@@ -5,7 +5,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 const ProtectedRoute = ({ children, isLoggedIn }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
-  return currentUser && isLoggedIn ? children : <Navigate to="/" replace />;
+  return isLoggedIn ? children : <Navigate to="/" replace />;
 };
 
 export default ProtectedRoute;

@@ -1,14 +1,55 @@
 import NewsCard from "../NewsCard/NewsCard";
 import "./SearchResults.css";
 
-function SearchResults() {
+function SearchResults({
+  articles,
+  isLoading,
+  hasSearched,
+  error,
+  visibleCards,
+  onShowMore,
+  isLoggedIn,
+}) {
+  if (!hasSearched) {
+    return;
+  }
+
+  if (isLoading) {
+    return <Preloader />;
+  }
+
+  if (error) {
+    return (
+      <section className="search__results">
+        <p className="search__result-error">{error}</p>
+      </section>
+    );
+  }
+
+  if (articles.length === 0) {
+    return (
+      <section className="search__results">
+        <p className="search__results-notfound">Nothing Found</p>
+      </section>
+    );
+  }
+
+  const articlesToShow = articles.slice(0, visibleCards);
+  const hasMoreArticles = visibleCards < articles.length;
+
   return (
     <div className="search__results">
       <h2 className="search__results-title">Search Results</h2>
-      <ul>
-        <NewsCard />
+      <ul className="search__results-cards">
+        {articlesToShow.map((articles, index) => (
+          <NewsCard key={index} articles={articles} isLoggedIn={isLoggedIn} />
+        ))}
       </ul>
-      <button className="search__results-btn">Show more</button>
+      {hasMoreArticles && (
+        <button className="search__results-btn" onClick={onShowMore}>
+          Show more
+        </button>
+      )}
     </div>
   );
 }
