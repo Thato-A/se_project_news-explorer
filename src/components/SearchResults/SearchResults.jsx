@@ -41,9 +41,9 @@ function SearchResults({
     <div className="search__results">
       <h2 className="search__results-title">Search Results</h2>
       <ul className="search__results-cards">
-        {articlesToShow.map((articles, index) => (
-          <NewsCard key={index} articles={articles} isLoggedIn={isLoggedIn} />
-        ))}
+        {/* {articlesToShow.map((articles, index) => ( */}
+        <NewsCard key={index} articles={articles} isLoggedIn={isLoggedIn} />
+        {/* ))} */}
       </ul>
       {hasMoreArticles && (
         <button className="search__results-btn" onClick={onShowMore}>

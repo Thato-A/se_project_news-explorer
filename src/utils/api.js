@@ -1,7 +1,7 @@
 import { newsApiBaseUrl } from "./constants";
 import { APIkey } from "./constants";
 
-const fetchNews = async (searchQuery) => {
+function fetchNews(searchQuery) {
   // Calculate date range (last 7 days)
   const today = new Date();
   const sevenDaysAgo = new Date();
@@ -20,8 +20,17 @@ const fetchNews = async (searchQuery) => {
 
   const url = `${newsApiBaseUrl}?${params}`;
 
-  const response = await fetch(url);
-  return response.json();
-};
+  const res = fetch(url);
+  return res.json();
+}
 
-export { fetchNews };
+function saveArticle(article) {
+  // API call to save articles
+  return request(`${newsApiBaseUrl}/articles`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(article),
+  });
+}
+
+export { fetchNews, saveArticle };

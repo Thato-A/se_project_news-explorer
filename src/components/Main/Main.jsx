@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { fetchNews } from "../../utils/api";
+import { fetchNews, saveArticle } from "../../utils/api";
 import SearchForm from "../SearchForm/SearchForm";
 import SearchResults from "../SearchResults/SearchResults";
 import About from "../About/About";
 
-function Main({ isLoggedin }) {
-  const [articles, setArticles] = useState([]);
+function Main({ isLoggedIn, articles }) {
   const [hasSearched, setHasSearched] = useState(false);
   const [visibleCards, setVisibleCards] = useState(3);
   const [error, setError] = useState("");
@@ -15,14 +14,14 @@ function Main({ isLoggedin }) {
     setVisibleCards((prev) => prev + 3);
   };
 
-  const handleSearch = async (searchQuery) => {
+  const handleSearch = (searchQuery) => {
     setIsLoading(true);
     setError("");
     setHasSearched(true);
     setVisibleCards(3);
 
     try {
-      const data = await fetchNews(searchQuery);
+      const data = fetchNews(searchQuery);
 
       if (data.articles && data.articles.length > 0) {
         setArticles(data.articles);
@@ -49,8 +48,9 @@ function Main({ isLoggedin }) {
         error={error}
         visibleCards={visibleCards}
         onShowMore={handleShowMore}
-        isLoggedin={isLoggedin}
+        isLoggedIn={isLoggedIn}
       />
+
       <About />
     </>
   );

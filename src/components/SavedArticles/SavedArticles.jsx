@@ -1,7 +1,32 @@
 import NewsCard from "../NewsCard/NewsCard";
+import { saveArticle } from "../../utils/api";
 import "./SavedArticles.css";
 
-function SavedArticles() {
+function SavedArticles({
+  articles,
+  isLoggedIn,
+  savedArticles,
+  setSavedArticles,
+}) {
+  const isArticleSaved = (article) => {
+    return savedArticles.some((saved) => saved.url === article.url);
+  };
+
+  const handleSaveArticle = (article) => {
+    if (!isLoggedIn) {
+      return;
+    }
+    return saveArticle(article)
+      .then((res) => {
+        if (res.ok) {
+          setSavedArticles((prev) => [...prev, article]);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to save article:", err);
+      });
+  };
+
   return (
     <>
       <div className="articles">
@@ -11,7 +36,15 @@ function SavedArticles() {
       </div>
       <div className="card__list-container">
         <ul className="card__list">
-          <NewsCard />
+          {articles.map((article, index) => (
+            <NewsCard
+              key={index}
+              article={article}
+              isLoggedIn={isLoggedIn}
+              onSave={handleSaveArticle}
+              isSaved={isArticleSaved}
+            />
+          ))}
         </ul>
       </div>
     </>

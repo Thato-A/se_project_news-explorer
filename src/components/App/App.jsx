@@ -11,9 +11,11 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
+  const [articles, setArticles] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
 
   const openLoginModal = () => {
     setActiveModal("login");
@@ -46,13 +48,26 @@ function App() {
           />
 
           <Routes>
-            <Route path="/" element={<Main isLoggedIn={isLoggedIn} />}></Route>
+            <Route
+              path="/"
+              element={
+                <Main
+                  isLoggedIn={isLoggedIn}
+                  articles={articles}
+                  setArticles={setArticles}
+                />
+              }
+            ></Route>
 
             <Route
               path="/saved-articles"
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
-                  <SavedArticles />
+                  <SavedArticles
+                    articles={articles}
+                    savedArticles={savedArticles}
+                    setSavedArticles={setSavedArticles}
+                  />
                 </ProtectedRoute>
               }
             ></Route>

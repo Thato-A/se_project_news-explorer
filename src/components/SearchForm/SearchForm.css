@@ -5,9 +5,12 @@
 
 .search {
   background-image: url("../../assets/Header-background.png");
+}
+
+.search__container {
   margin: 0 auto;
-  position: relative;
   width: 600px;
+  position: relative;
 }
 
 .search__title {
