@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
@@ -8,14 +8,18 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { fetchNews } from "../../utils/api";
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [error, setError] = useState("");
 
   const openLoginModal = () => {
     setActiveModal("login");
@@ -37,6 +41,31 @@ function App() {
     navigate("/");
   };
 
+  const handleSearch = async (url) => {
+    setIsLoading(true);
+    setError("");
+    setHasSearched(true);
+
+    console.log("I'm clicked!");
+
+    try {
+      const data = await fetchNews(url);
+
+      if (data.articles && data.articles.length > 0) {
+        setArticles(data.articles);
+      } else {
+        setArticles([]);
+      }
+    } catch (err) {
+      setError(
+        "Sorry, something went wrong during the request. Please try again later."
+      );
+      setArticles([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
@@ -45,6 +74,7 @@ function App() {
             isLoggedIn={isLoggedIn}
             onRegisterClick={openRegistrationModal}
             onSignOut={handleSignOut}
+            onSearch={handleSearch}
           />
 
           <Routes>
@@ -55,6 +85,9 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   articles={articles}
                   setArticles={setArticles}
+                  isLoading={isLoading}
+                  hasSearched={hasSearched}
+                  error={error}
                 />
               }
             ></Route>

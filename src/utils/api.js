@@ -1,7 +1,7 @@
 import { newsApiBaseUrl } from "./constants";
 import { APIkey } from "./constants";
 
-function fetchNews(searchQuery) {
+async function fetchNews(keyword) {
   // Calculate date range (last 7 days)
   const today = new Date();
   const sevenDaysAgo = new Date();
@@ -11,7 +11,7 @@ function fetchNews(searchQuery) {
   const formatDate = (date) => date.toISOString().split("T")[0];
 
   const params = new URLSearchParams({
-    q: searchQuery,
+    q: keyword,
     apiKey: APIkey,
     from: formatDate(sevenDaysAgo),
     to: formatDate(today),
@@ -20,7 +20,10 @@ function fetchNews(searchQuery) {
 
   const url = `${newsApiBaseUrl}?${params}`;
 
-  const res = fetch(url);
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error("Could not get results");
+  }
   return res.json();
 }
 

@@ -1,6 +1,4 @@
 import "./NewsCard.css";
-import Bookmark from "../../assets/bookmark.svg";
-import NatureImage from "../../assets/nature-image.png";
 import { useState } from "react";
 
 function NewsCard({ articles, isLoggedIn, isSaved, onSave }) {
@@ -24,23 +22,24 @@ function NewsCard({ articles, isLoggedIn, isSaved, onSave }) {
   return (
     <li className="card">
       <img
-        src={article.urlToImage || { NatureImage }}
-        alt={article.title}
+        src={articles.urlToImage}
+        alt={articles.title}
         className="card__image"
       />
       {isLoggedIn && (
         <button
-          className={`card__like ${isSaved ? card__like_active : ""}`}
+          className={`card__like-btn ${isSaved ? "card__like-btn_active" : ""}`}
           onClick={() => onSave && onSave(articles)}
-        >
-          <img src={Bookmark} alt="Like button" className="card__like-btn" />
-        </button>
+        ></button>
+      )}
+      {!isLoggedIn && (
+        <button className="card__tooltip">Sign in to save articles</button>
       )}
       <div className="card__content">
-        <p className="card__date">{formatDate(article.publishedAt)}</p>
-        <h4 className="card__title">{article.title}</h4>
-        <p className="card__info">{article.description}</p>
-        <span className="card__source-name">{article.source.name}</span>
+        <p className="card__date">{formatDate(articles.publishedAt)}</p>{" "}
+        <h4 className="card__title">{articles.title}</h4>
+        <p className="card__info">{articles.description}</p>
+        <p className="card__source-name">{articles.sourceName}</p>
       </div>
     </li>
   );

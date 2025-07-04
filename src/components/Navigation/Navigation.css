@@ -1,0 +1,49 @@
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
+  padding: 13px 104px 16px;
+}
+
+.nav__logo {
+  font-family: "Roboto-slab", "Times New Roman", serif;
+  color: rgba(255, 255, 255, 1);
+}
+
+.nav__link-container {
+  display: flex;
+  list-style-type: none;
+  gap: 35px;
+  margin: 0;
+}
+
+.nav__home-link {
+  margin: 0;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
+.nav__news-link {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
+.nav__logout {
+  width: 80px;
+  height: 35px;
+  border-radius: 100px;
+  background-color: transparent;
+  margin: 7px 0;
+  border-color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.nav__login {
+  width: 120px;
+  height: 40px;
+  border-radius: 100px;
+  margin: 7px 0;
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+}

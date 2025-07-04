@@ -1,5 +1,11 @@
+import { useState } from "react";
 import "./SearchForm.css";
-function SearchForm({ handleSearch }) {
+function SearchForm({ onSearch }) {
+  const [keyword, setKeyword] = useState("");
+  const submitSearch = (e) => {
+    e.preventDefault();
+    onSearch(keyword);
+  };
   return (
     <>
       <div className="search">
@@ -10,11 +16,13 @@ function SearchForm({ handleSearch }) {
             account
           </p>
           <div className="search__content">
-            <form className="search__form" onSubmit={handleSearch}>
+            <form className="search__form" onSubmit={submitSearch}>
               <input
                 className="search__input"
                 type="text"
                 placeholder="Enter topic"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
               />
               <button className="search__btn" type="submit">
                 Search

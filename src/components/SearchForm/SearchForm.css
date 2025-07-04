@@ -3,10 +3,6 @@
   src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
 }
 
-.search {
-  background-image: url("../../assets/Header-background.png");
-}
-
 .search__container {
   margin: 0 auto;
   width: 600px;
@@ -14,6 +10,8 @@
 }
 
 .search__title {
+  margin: 0;
+  padding-top: 80px;
   font-size: 60px;
   color: rgba(255, 255, 255, 1);
   font-family: "Roboto-slab", "Times New Roman", serif;
