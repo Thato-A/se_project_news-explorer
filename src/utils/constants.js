@@ -5,11 +5,6 @@ export const newsApiBaseUrl =
     ? "https://nomoreparties.co/news/v2/everything"
     : "https://newsapi.org/v2/everything";
 
-export function generateMongoId() {
-  const hex = "0123456789abcdef";
-  let id = "";
-  for (let i = 0; i < 24; i++) {
-    id += hex[Math.floor(Math.random() * 16)];
-  }
-  return id;
+export function generateFakeId() {
+  return Math.random().toString(36).slice(2, 10);
 }

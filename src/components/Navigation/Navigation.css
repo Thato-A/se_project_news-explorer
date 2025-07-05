@@ -47,3 +47,19 @@
   border-color: rgba(255, 255, 255, 1);
   color: rgba(255, 255, 255, 1);
 }
+
+@media (max-width: 660px) {
+  .nav__container {
+    padding-left: 0;
+    background-color: rgba(26, 27, 34, 1);
+  }
+
+  .nav__logo {
+    color: rgba(255, 255, 255, 1);
+    padding-left: 16px;
+  }
+
+  .nav__link-container {
+    display: none;
+  }
+}

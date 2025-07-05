@@ -10,14 +10,14 @@
 
 .search__results-title {
   font-family: "Roboto-slab", "Times New Roman", Times, serif;
-  margin: 0 0 26px;
+  margin: 26px 0;
   font-size: 40px;
 }
 
 .search__results-cards {
   display: flex;
   gap: 16px;
-  padding: 0;
+  padding: 12px 0 0;
   flex-wrap: wrap;
 }
 

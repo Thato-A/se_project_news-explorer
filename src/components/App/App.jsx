@@ -1,18 +1,20 @@
 import { useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { fetchNews } from "../../utils/api";
+import { checkToken } from "../../utils/auth";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import SuccessPopUp from "../SuccessModal/SuccessPopUp";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { fetchNews } from "../../utils/api";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
@@ -29,8 +31,32 @@ function App() {
     setActiveModal("register");
   };
 
+  const openSuccessPopUp = () => {
+    setActiveModal("popup");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const handleRegister = async () => {
+    const res = await register({ username, email, password });
+    if (res.token) {
+      const userData = await checkToken(res.token);
+      setCurrentUser(userData);
+      setIsLoggedIn(true);
+      setActiveModal(openSuccessPopUp);
+    }
+  };
+
+  const handleLogin = async () => {
+    const res = await login({ email, password });
+    if (res.token) {
+      const userData = await checkToken(res.token);
+      setCurrentUser(userData);
+      setIsLoggedIn(true);
+      closeActiveModal("");
+    }
   };
 
   const navigate = useNavigate();
@@ -45,8 +71,6 @@ function App() {
     setIsLoading(true);
     setError("");
     setHasSearched(true);
-
-    console.log("I'm clicked!");
 
     try {
       const data = await fetchNews(url);
@@ -111,6 +135,7 @@ function App() {
             onRegisterClick={openRegistrationModal}
             onLoginClick={openLoginModal}
             onClose={closeActiveModal}
+            onSubmit={handleRegister}
           />
 
           <LoginModal
@@ -118,7 +143,10 @@ function App() {
             onLoginClick={openLoginModal}
             onRegisterClick={openRegistrationModal}
             onClose={closeActiveModal}
+            onSubmit={handleLogin}
           />
+
+          <SuccessPopUp isOpen={activeModal === "popup"} />
 
           <Footer />
         </div>

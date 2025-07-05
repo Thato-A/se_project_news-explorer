@@ -1,6 +1,8 @@
 import NewsCard from "../NewsCard/NewsCard";
 import { saveArticle } from "../../utils/api";
 import "./SavedArticles.css";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function SavedArticles({
   articles,
@@ -8,6 +10,7 @@ function SavedArticles({
   savedArticles,
   setSavedArticles,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
   const isArticleSaved = (article) => {
     return savedArticles.some((saved) => saved.url === article.url);
   };
@@ -31,8 +34,12 @@ function SavedArticles({
     <>
       <div className="articles">
         <p className="articles__paragraph">Saved Articles</p>
-        <h3 className="articles__heading">Lily, you have 5 saved articles</h3>
-        <p className="articles__keywords">By keywords</p>
+        <h3 className="articles__heading">
+          {currentUser.username}, you have {articles.length} saved articles
+        </h3>
+        <p className="articles__keywords">
+          By keywords: {articles.source.name}
+        </p>
       </div>
       <div className="card__list-container">
         <ul className="card__list">

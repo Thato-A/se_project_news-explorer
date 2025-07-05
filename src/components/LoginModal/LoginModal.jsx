@@ -5,12 +5,23 @@ function LoginModal({ isOpen, onClose, onSubmit, onRegisterClick, isLoading }) {
   const { values, errors, handleChange, isValid, resetForm } =
     useFormAndValidation({ email: "", password: "" });
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSubmit(values)
+      .then(() => {
+        resetForm();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <ModalWithForm
       title="Sign In"
       isOpen={isOpen}
       onClose={onClose}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <label className="modal__label">
         Email

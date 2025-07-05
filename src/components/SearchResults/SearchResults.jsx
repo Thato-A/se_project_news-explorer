@@ -38,12 +38,18 @@ function SearchResults({
   const articlesToShow = articles.slice(0, visibleCards);
   const hasMoreArticles = visibleCards < articles.length;
 
+  console.log(articlesToShow);
+
   return (
     <div className="search__results">
       <h2 className="search__results-title">Search Results</h2>
       <ul className="search__results-cards">
-        {articlesToShow.map((articles, index) => (
-          <NewsCard key={index} articles={articles} isLoggedIn={isLoggedIn} />
+        {articlesToShow.map((article) => (
+          <NewsCard
+            key={article.url}
+            article={article}
+            isLoggedIn={isLoggedIn}
+          />
         ))}
       </ul>
       {hasMoreArticles && (

@@ -26,6 +26,8 @@
 .card__list-container {
   padding: 0;
   background-color: rgba(245, 246, 247, 1);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card__list {

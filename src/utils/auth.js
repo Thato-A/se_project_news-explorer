@@ -1,15 +1,24 @@
-// export const authorize = (email, password) => {
+import { generateFakeId } from "./constants";
 
-//   return new Promise((resolve, reject) => {
-//     resolve({ token: "a fake token" });
-//   });
-// };
+export const authorize = (email, password) => {
+  return new Promise((resolve) => {
+    currentUser = {
+      _id: generateFakeId(),
+      username: email.split("@")[0],
+      email,
+      password,
+    };
 
-// export const checkToken = (token) => {
+    resolve({ token: "fake-token" });
+  });
+};
 
-//   return new Promise((resolve, reject) => {
-//     resolve({
-//       data: { name: "fake user", email: "fake@example,com", _id: "fake-id" },
-//     });
-//   });
-// };
+export const checkToken = (token) => {
+  return new Promise((resolve) => {
+    if (token === "fake-token" && currentUser) {
+      resolve(currentUser);
+    } else {
+      resolve(null);
+    }
+  });
+};

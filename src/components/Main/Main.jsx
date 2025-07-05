@@ -20,7 +20,6 @@ function Main({ isLoggedIn, articles, isLoading, hasSearched, error }) {
         onShowMore={handleShowMore}
         isLoggedIn={isLoggedIn}
       />
-
       <About />
     </>
   );

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import LogOut from "../../assets/logout.svg";
 import "./Navigation.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Navigation({ isLoggedIn, onRegisterClick, onSignOut }) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <div className="nav">
@@ -28,7 +29,7 @@ function Navigation({ isLoggedIn, onRegisterClick, onSignOut }) {
 
               <li>
                 <button className="nav__logout" onClick={onSignOut}>
-                  Lily
+                  {currentUser.name}
                   <img
                     src={LogOut}
                     alt="logout icon"
@@ -51,16 +52,6 @@ function Navigation({ isLoggedIn, onRegisterClick, onSignOut }) {
             </ul>
           )}
         </nav>
-        <button
-          className="nav__hamburger"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        ></button>
-
-        <div
-          className={`nav__mobile-menu ${
-            isMobileMenuOpen ? "nav__mobile-menu_opened" : ""
-          }`}
-        ></div>
       </div>
     </div>
   );

@@ -13,16 +13,20 @@ function RegisterModal({ isOpen, onClose, onSubmit, onLoginClick, isLoading }) {
   } = useFormAndValidation({
     email: "",
     password: "",
-    name: "",
-    avatar: "",
+    username: "",
   });
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSubmit(values);
+  };
 
   return (
     <ModalWithForm
       title="Sign Up"
       isOpen={isOpen}
       onClose={onClose}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <label className="modal__label">
         Email
