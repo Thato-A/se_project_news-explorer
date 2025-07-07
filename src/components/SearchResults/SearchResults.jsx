@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import "./SearchResults.css";
@@ -5,6 +6,7 @@ import "./SearchResults.css";
 function SearchResults({
   articles,
   isLoading,
+  setIsLoading,
   hasSearched,
   error,
   visibleCards,
@@ -38,7 +40,13 @@ function SearchResults({
   const articlesToShow = articles.slice(0, visibleCards);
   const hasMoreArticles = visibleCards < articles.length;
 
-  console.log(articlesToShow);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="search__results">

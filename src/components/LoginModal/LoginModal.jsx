@@ -19,6 +19,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onRegisterClick, isLoading }) {
   return (
     <ModalWithForm
       title="Sign In"
+      name="login"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -66,7 +67,8 @@ function LoginModal({ isOpen, onClose, onSubmit, onRegisterClick, isLoading }) {
           onClick={onRegisterClick}
           className="modal__switch-button"
         >
-          or Sign Up
+          <span className="modal__switch-or">or</span>{" "}
+          <span className="modal__switch-highlight">Sign Up</span>
         </button>
       </div>
     </ModalWithForm>

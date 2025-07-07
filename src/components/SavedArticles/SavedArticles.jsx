@@ -4,26 +4,20 @@ import "./SavedArticles.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function SavedArticles({
-  articles,
-  isLoggedIn,
-  savedArticles,
-  setSavedArticles,
-}) {
+function SavedArticles({ isLoggedIn, savedArticles, setSavedArticles }) {
   const { currentUser } = useContext(CurrentUserContext);
   const isArticleSaved = (article) => {
     return savedArticles.some((saved) => saved.url === article.url);
   };
 
   const handleSaveArticle = (article) => {
-    if (!isLoggedIn) {
-      return;
-    }
+    if (!isLoggedIn) return;
+
+    if (isArticleSaved(article)) return;
+
     return saveArticle(article)
-      .then((res) => {
-        if (res.ok) {
-          setSavedArticles((prev) => [...prev, article]);
-        }
+      .then((savedArticle) => {
+        setSavedArticles((prev) => [...prev, savedArticle]);
       })
       .catch((err) => {
         console.error("Failed to save article:", err);
@@ -35,21 +29,19 @@ function SavedArticles({
       <div className="articles">
         <p className="articles__paragraph">Saved Articles</p>
         <h3 className="articles__heading">
-          {currentUser.username}, you have {articles.length} saved articles
+          {currentUser.username}, you have {savedArticles.length} saved articles
         </h3>
-        <p className="articles__keywords">
-          By keywords: {articles.source.name}
-        </p>
+        <p className="articles__keywords">By keywords:</p>
       </div>
       <div className="card__list-container">
         <ul className="card__list">
-          {articles.map((article, index) => (
+          {savedArticles.map((article) => (
             <NewsCard
-              key={index}
+              key={article.url}
               article={article}
               isLoggedIn={isLoggedIn}
               onSave={handleSaveArticle}
-              isSaved={isArticleSaved}
+              isSaved={isArticleSaved(article)}
             />
           ))}
         </ul>

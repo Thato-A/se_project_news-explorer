@@ -8,7 +8,9 @@ function Footer() {
       </p>
       <ul className="footer__links">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className="footer__home-link">
+            Home
+          </Link>
         </li>
         <li>TripleTen</li>
         <li>Github</li>

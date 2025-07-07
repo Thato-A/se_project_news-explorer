@@ -6,9 +6,10 @@ import "./Header.css";
 
 function Header({ isLoggedIn, onRegisterClick, onSignOut, onSearch }) {
   const location = useLocation();
+  const isSavedPage = location.pathname === "/saved-articles";
 
   return (
-    <header className="header">
+    <header className={`header ${isSavedPage ? "header_saved" : ""}`}>
       <Navigation
         isLoggedIn={isLoggedIn}
         onRegisterClick={onRegisterClick}

@@ -21,7 +21,7 @@ function NewsCard({ article, isLoggedIn, isSaved, onSave }) {
 
       <button
         className={`card__like-btn ${isSaved ? "card__like-btn_active" : ""}`}
-        onClick={() => onSave && onSave(article)}
+        onClick={() => onSave(article)}
       ></button>
 
       {!isLoggedIn && (

@@ -42,9 +42,10 @@
     flex-direction: column;
   }
 
-  .hamburger__home-link {
+  .hamburger__link {
     font-size: 18px;
     color: rgba(255, 255, 255, 1);
+    text-decoration: none;
   }
 
   .hamburger__login {
@@ -56,4 +57,18 @@
     color: rgba(255, 255, 255, 1);
     background-color: transparent;
   }
+}
+
+.hamburger__logout {
+  width: 110px;
+  height: 50px;
+  border-radius: 100px;
+  border-color: rgba(255, 255, 255, 1);
+  margin: 20px 0;
+  color: rgba(255, 255, 255, 1);
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px;
 }

@@ -11,14 +11,9 @@ export function useFormAndValidation(inputValues = {}) {
     setIsValid(e.target.closest(".modal__form").checkValidity());
   }, []);
 
-  const resetForm = (
-    newValues = inputValues,
-    newErrors = {},
-    newIsValid = false
-  ) => {
-    setValues(newValues);
-    setErrors(newErrors);
-    setIsValid(newIsValid);
+  const resetForm = () => {
+    setValues(inputValues);
+    setErrors({});
   };
 
   return {

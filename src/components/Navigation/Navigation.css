@@ -5,6 +5,10 @@
   padding: 13px 104px 16px;
 }
 
+.nav__container_saved {
+  border-bottom: 1px solid rgba(26, 27, 34, 0.5);
+}
+
 .nav__logo {
   font-family: "Roboto-slab", "Times New Roman", serif;
   color: rgba(255, 255, 255, 1);
@@ -17,25 +21,45 @@
   margin: 0;
 }
 
-.nav__home-link {
+.nav__link {
   margin: 0;
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  transition: border-bottom 0.3s ease;
 }
 
-.nav__news-link {
-  color: rgba(255, 255, 255, 1);
-  text-decoration: none;
+.nav__link--active {
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
+
+.nav_saved {
+  color: rgba(26, 27, 34, 1);
 }
 
 .nav__logout {
-  width: 80px;
+  width: 85px;
   height: 35px;
   border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: transparent;
   margin: 7px 0;
+  padding: 11px;
   border-color: rgba(255, 255, 255, 1);
   color: rgba(255, 255, 255, 1);
+}
+
+.nav__logout-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.nav__logout_saved {
+  border-color: rgba(26, 27, 34, 1);
+  color: inherit;
 }
 
 .nav__login {

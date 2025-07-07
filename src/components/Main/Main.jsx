@@ -2,7 +2,14 @@ import { useState } from "react";
 import SearchResults from "../SearchResults/SearchResults";
 import About from "../About/About";
 
-function Main({ isLoggedIn, articles, isLoading, hasSearched, error }) {
+function Main({
+  isLoggedIn,
+  articles,
+  isLoading,
+  setIsLoading,
+  hasSearched,
+  error,
+}) {
   const [visibleCards, setVisibleCards] = useState(3);
 
   const handleShowMore = () => {
@@ -14,6 +21,7 @@ function Main({ isLoggedIn, articles, isLoading, hasSearched, error }) {
       <SearchResults
         articles={articles}
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
         hasSearched={hasSearched}
         error={error}
         visibleCards={visibleCards}

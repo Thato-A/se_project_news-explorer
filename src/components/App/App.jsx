@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { fetchNews } from "../../utils/api";
-import { checkToken } from "../../utils/auth";
+import { checkToken, register, login } from "../../utils/auth";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
@@ -31,26 +31,21 @@ function App() {
     setActiveModal("register");
   };
 
-  const openSuccessPopUp = () => {
-    setActiveModal("popup");
-  };
-
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
-  const handleRegister = async () => {
-    const res = await register({ username, email, password });
-    if (res.token) {
-      const userData = await checkToken(res.token);
-      setCurrentUser(userData);
-      setIsLoggedIn(true);
-      setActiveModal(openSuccessPopUp);
+  const handleRegister = async (data) => {
+    try {
+      const res = await register(data);
+      setActiveModal("success");
+    } catch (err) {
+      console.error(err);
     }
   };
 
-  const handleLogin = async () => {
-    const res = await login({ email, password });
+  const handleLogin = async (data) => {
+    const res = await login(data);
     if (res.token) {
       const userData = await checkToken(res.token);
       setCurrentUser(userData);
@@ -110,6 +105,7 @@ function App() {
                   articles={articles}
                   setArticles={setArticles}
                   isLoading={isLoading}
+                  setIsLoading={setIsLoading}
                   hasSearched={hasSearched}
                   error={error}
                 />
@@ -121,7 +117,6 @@ function App() {
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <SavedArticles
-                    articles={articles}
                     savedArticles={savedArticles}
                     setSavedArticles={setSavedArticles}
                   />
@@ -146,7 +141,11 @@ function App() {
             onSubmit={handleLogin}
           />
 
-          <SuccessPopUp isOpen={activeModal === "popup"} />
+          <SuccessPopUp
+            isOpen={activeModal === "success"}
+            onClose={closeActiveModal}
+            onLoginClick={openLoginModal}
+          />
 
           <Footer />
         </div>

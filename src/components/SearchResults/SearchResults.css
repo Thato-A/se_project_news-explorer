@@ -31,3 +31,6 @@
   border: none;
   background-color: rgba(232, 232, 232, 1);
 }
+
+@media (max-width: 768px) {
+}

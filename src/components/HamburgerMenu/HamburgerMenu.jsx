@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import LogoutLight from "../../assets/logout-light.svg";
 import "./HamburgerMenu.css";
 
 function HamburgerMenu({ isLoggedIn, onSignOut, onRegisterClick }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  const { currentUser } = useContext(CurrentUserContext);
 
   const handleLogout = () => {
     onSignOut();
@@ -20,23 +25,23 @@ function HamburgerMenu({ isLoggedIn, onSignOut, onRegisterClick }) {
         <nav className="hamburger__menu">
           {isLoggedIn ? (
             <ul className="hamburger__link-container">
-              <li className="hamburger__home-link">
-                <Link to="/">
+              <li>
+                <Link to="/" className="hamburger__link">
                   <p>Home</p>
                 </Link>
               </li>
 
               <li>
-                <Link to="/saved-articles" className="hamburger__news-link">
+                <Link to="/saved-articles" className="hamburger__link">
                   <p>Saved articles</p>
                 </Link>
               </li>
 
               <li>
                 <button className="hamburger__logout" onClick={handleLogout}>
-                  {currentUser.name}
+                  Lily
                   <img
-                    src={LogOut}
+                    src={LogoutLight}
                     alt="logout icon"
                     className="hamburger__logout-icon"
                   />

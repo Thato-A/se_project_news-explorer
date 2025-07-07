@@ -6,3 +6,7 @@
 .header {
   background-image: url("../../assets/Header-background.png");
 }
+
+.header_saved {
+  background-image: none;
+}

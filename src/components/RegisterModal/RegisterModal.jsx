@@ -19,11 +19,13 @@ function RegisterModal({ isOpen, onClose, onSubmit, onLoginClick, isLoading }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onSubmit(values);
+    resetForm();
   };
 
   return (
     <ModalWithForm
       title="Sign Up"
+      name="register"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -71,13 +73,7 @@ function RegisterModal({ isOpen, onClose, onSubmit, onLoginClick, isLoading }) {
         />
       </label>
       <div className="modal__button-container">
-        <button
-          type="submit"
-          className={`modal__add-button ${
-            !isValid ? "modal__add-button_disabled" : ""
-          }`}
-          disabled={!isValid}
-        >
+        <button type="submit" className="modal__add-button">
           {isLoading ? "Registering..." : "Sign Up"}
         </button>
         <button
@@ -85,7 +81,8 @@ function RegisterModal({ isOpen, onClose, onSubmit, onLoginClick, isLoading }) {
           onClick={onLoginClick}
           className="modal__switch-button"
         >
-          or Sign In
+          <span className="modal__switch-or">or</span>{" "}
+          <span className="modal__switch-highlight">Sign In</span>
         </button>
       </div>
     </ModalWithForm>

@@ -6,7 +6,7 @@ function About() {
       <img src={AuthorImage} alt="Author's image" className="about__image" />
       <div className="about__container">
         <h2 className="about__title">About the author</h2>
-        <p className="about__paragraph"></p>
+        <p className="about__paragraph">asdfasdf</p>
       </div>
     </div>
   );
