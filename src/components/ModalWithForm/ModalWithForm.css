@@ -99,3 +99,13 @@
 .modal__switch-highlight {
   color: rgba(47, 113, 229, 1);
 }
+
+@media (max-width: 320px) {
+  .modal__close {
+    right: 4px;
+  }
+
+  .modal__add-button {
+    width: 230px;
+  }
+}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import Navigation from "../Navigation/Navigation";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
@@ -10,8 +11,14 @@ function Header({
   onSearch,
   isSavedPage,
 }) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <header className={`header ${isSavedPage ? "header_saved" : ""}`}>
+    <header
+      className={`header ${isSavedPage ? "header_saved" : ""}${
+        isMobileMenuOpen ? "header_mobile-open" : ""
+      }`}
+    >
       <Navigation
         isLoggedIn={isLoggedIn}
         onRegisterClick={onRegisterClick}
@@ -21,6 +28,9 @@ function Header({
         isLoggedIn={isLoggedIn}
         onSignOut={onSignOut}
         onRegisterClick={onRegisterClick}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+        isSavedPage={isSavedPage}
       />
       {location.pathname === "/" ? <SearchForm onSearch={onSearch} /> : ""}
     </header>

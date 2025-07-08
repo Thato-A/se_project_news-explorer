@@ -19,3 +19,15 @@
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 24px 40px 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer__links {
+    align-items: flex-start;
+  }
+}

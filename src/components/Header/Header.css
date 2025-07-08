@@ -10,3 +10,13 @@
 .header_saved {
   background-image: none;
 }
+
+/* .header_mobile-open {
+  background-color: rgba(26, 27, 34, 1);
+} */
+
+/* @media (max-width: 320px) {
+  .header_mobile-open {
+    background-color: rgba(26, 27, 34, 1);
+  }
+} */

@@ -72,15 +72,15 @@
   color: rgba(255, 255, 255, 1);
 }
 
-@media (max-width: 660px) {
+@media (max-width: 768px) {
   .nav__container {
-    padding-left: 0;
-    background-color: rgba(26, 27, 34, 1);
+    padding: 12px 40px;
   }
+}
 
-  .nav__logo {
-    color: rgba(255, 255, 255, 1);
-    padding-left: 16px;
+@media (max-width: 320px) {
+  .nav__container {
+    padding: 16px;
   }
 
   .nav__link-container {
