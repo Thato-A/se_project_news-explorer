@@ -7,7 +7,11 @@ function Main({
   articles,
   isLoading,
   setIsLoading,
+  savedArticles,
+  setSavedArticles,
+  isArticleSaved,
   hasSearched,
+  onSave,
   error,
 }) {
   const [visibleCards, setVisibleCards] = useState(3);
@@ -23,6 +27,10 @@ function Main({
         isLoading={isLoading}
         setIsLoading={setIsLoading}
         hasSearched={hasSearched}
+        savedArticles={savedArticles}
+        setSavedArticles={setSavedArticles}
+        isArticleSaved={isArticleSaved}
+        onSave={onSave}
         error={error}
         visibleCards={visibleCards}
         onShowMore={handleShowMore}

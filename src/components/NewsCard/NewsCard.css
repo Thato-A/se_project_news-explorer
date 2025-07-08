@@ -31,6 +31,14 @@
   background-image: url(../../assets/Bookmark-hover.svg);
 }
 
+.card__like-btn_delete {
+  background-image: url(../../assets/Delete-button.svg);
+}
+
+.card__like-btn_delete:hover {
+  background-image: url(../../assets/Delete-button.svg);
+}
+
 .card__tooltip {
   width: 180px;
   height: 40px;
@@ -70,7 +78,59 @@
   font-family: "Roboto-slab", "Times New Roman", Times, serif;
 }
 
+.card__info {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 6;
+}
+
+.card__read-more {
+  border: none;
+}
+
 .card__source-name {
   font-family: "Roboto-slab", "Times New Roman", Times, serif;
   color: rgba(182, 188, 191, 1);
+}
+
+@media (max-width: 786px) {
+  .card {
+    width: 210px;
+    height: 450px;
+  }
+
+  .card__image {
+    height: 130px;
+  }
+
+  .card__like-btn {
+    top: 10px;
+    right: 10px;
+  }
+
+  .card__tooltip {
+    width: 150px;
+    height: 40px;
+    top: 10px;
+    right: 55px;
+  }
+
+  .card__title {
+    font-size: 18px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+  }
+
+  .card__title--expanded {
+    display: block;
+  }
+
+  .card__content {
+    padding: 0 16px;
+  }
 }

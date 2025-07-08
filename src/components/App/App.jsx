@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { fetchNews } from "../../utils/api";
 import { checkToken, register, login } from "../../utils/auth";
 import Header from "../Header/Header";
@@ -14,7 +14,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
@@ -85,6 +85,27 @@ function App() {
     }
   };
 
+  const isArticleSaved = (article) => {
+    return savedArticles.some((saved) => saved.url === article.url);
+  };
+
+  const handleSaveArticle = (article) => {
+    if (!isLoggedIn) return;
+
+    if (isArticleSaved(article)) return;
+
+    // setSavedArticles((prev) => [...prev, article]);
+
+    const updatedArticles = [...savedArticles, article];
+    setSavedArticles(updatedArticles);
+
+    localStorage.setItem("savedArticles", JSON.stringify(updatedArticles));
+    console.log("Saved to localStorage:", updatedArticles);
+  };
+
+  const location = useLocation();
+  const isSavedPage = location.pathname === "/saved-articles";
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
@@ -94,6 +115,7 @@ function App() {
             onRegisterClick={openRegistrationModal}
             onSignOut={handleSignOut}
             onSearch={handleSearch}
+            isSavedPage={isSavedPage}
           />
 
           <Routes>
@@ -107,7 +129,11 @@ function App() {
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
                   hasSearched={hasSearched}
+                  savedArticles={savedArticles}
+                  isArticleSaved={isArticleSaved}
+                  setSavedArticles={setSavedArticles}
                   error={error}
+                  onSave={handleSaveArticle}
                 />
               }
             ></Route>
@@ -119,6 +145,9 @@ function App() {
                   <SavedArticles
                     savedArticles={savedArticles}
                     setSavedArticles={setSavedArticles}
+                    isArticleSaved={isArticleSaved}
+                    isSavedPage={isSavedPage}
+                    isLoggedIn={isLoggedIn}
                   />
                 </ProtectedRoute>
               }

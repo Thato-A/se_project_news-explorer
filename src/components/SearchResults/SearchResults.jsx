@@ -9,6 +9,8 @@ function SearchResults({
   setIsLoading,
   hasSearched,
   error,
+  isArticleSaved,
+  onSave,
   visibleCards,
   onShowMore,
   isLoggedIn,
@@ -57,6 +59,8 @@ function SearchResults({
             key={article.url}
             article={article}
             isLoggedIn={isLoggedIn}
+            onSave={onSave}
+            isArticleSaved={isArticleSaved}
           />
         ))}
       </ul>

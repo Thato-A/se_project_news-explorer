@@ -33,4 +33,15 @@
 }
 
 @media (max-width: 768px) {
+  .search__results {
+    padding: 40px;
+  }
+
+  .search__results-title {
+    font-size: 30px;
+  }
+
+  .search__results-cards {
+    gap: 8px;
+  }
 }

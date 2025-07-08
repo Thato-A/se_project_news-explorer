@@ -1,28 +1,15 @@
 import NewsCard from "../NewsCard/NewsCard";
-import { saveArticle } from "../../utils/api";
-import "./SavedArticles.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./SavedArticles.css";
 
-function SavedArticles({ isLoggedIn, savedArticles, setSavedArticles }) {
+function SavedArticles({
+  isLoggedIn,
+  savedArticles,
+  isArticleSaved,
+  isSavedPage,
+}) {
   const { currentUser } = useContext(CurrentUserContext);
-  const isArticleSaved = (article) => {
-    return savedArticles.some((saved) => saved.url === article.url);
-  };
-
-  const handleSaveArticle = (article) => {
-    if (!isLoggedIn) return;
-
-    if (isArticleSaved(article)) return;
-
-    return saveArticle(article)
-      .then((savedArticle) => {
-        setSavedArticles((prev) => [...prev, savedArticle]);
-      })
-      .catch((err) => {
-        console.error("Failed to save article:", err);
-      });
-  };
 
   return (
     <>
@@ -40,8 +27,8 @@ function SavedArticles({ isLoggedIn, savedArticles, setSavedArticles }) {
               key={article.url}
               article={article}
               isLoggedIn={isLoggedIn}
-              onSave={handleSaveArticle}
-              isSaved={isArticleSaved(article)}
+              isArticleSaved={isArticleSaved}
+              isSavedPage={isSavedPage}
             />
           ))}
         </ul>
