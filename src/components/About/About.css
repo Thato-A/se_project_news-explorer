@@ -5,7 +5,8 @@
 
 .about {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 40px;
   padding: 50px 104px;
 }
 
@@ -16,12 +17,23 @@
 }
 
 .about__container {
-  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px;
+  overflow-wrap: break-word;
 }
 
 .about__title {
   font-family: "Roboto-slab", "Times New Roman", serif;
-  padding: 20px 0 0 20px;
+  font-size: 30px;
+}
+
+.about__paragraph {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -35,7 +47,7 @@
   }
 
   .about__container {
-    width: 232px;
+    width: 400px;
   }
 }
 
@@ -46,6 +58,10 @@
   }
 
   .about__image {
+    width: 260px;
+  }
+
+  .about__container {
     width: 260px;
   }
 }

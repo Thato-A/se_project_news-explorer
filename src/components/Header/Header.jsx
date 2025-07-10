@@ -17,7 +17,7 @@ function Header({
     <header
       className={`header ${isSavedPage ? "header_saved" : ""}${
         isMobileMenuOpen ? "header_mobile-open" : ""
-      }`}
+      }${isSavedPage && isMobileMenuOpen ? "header_saved-mobile" : ""}`}
     >
       <Navigation
         isLoggedIn={isLoggedIn}

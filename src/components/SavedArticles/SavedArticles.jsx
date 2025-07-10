@@ -8,6 +8,7 @@ function SavedArticles({
   savedArticles,
   isArticleSaved,
   isSavedPage,
+  onDelete,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -29,6 +30,7 @@ function SavedArticles({
               isLoggedIn={isLoggedIn}
               isArticleSaved={isArticleSaved}
               isSavedPage={isSavedPage}
+              onDelete={onDelete}
             />
           ))}
         </ul>

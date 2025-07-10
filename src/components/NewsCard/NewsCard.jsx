@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./NewsCard.css";
 
 function NewsCard({
@@ -7,8 +7,11 @@ function NewsCard({
   isArticleSaved,
   onSave,
   isSavedPage,
+  onDelete,
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(false);
+  const titleRef = useRef(null);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -26,6 +29,18 @@ function NewsCard({
     onSave(article);
   };
 
+  const handleDelete = () => {
+    if (!isSaved) return;
+    onDelete(article);
+  };
+
+  useEffect(() => {
+    const el = titleRef.current;
+    if (el) {
+      setIsTruncated(el.scrollHeight > el.clientHeight);
+    }
+  }, [article.title, isExpanded]);
+
   return (
     <li className="card">
       <img
@@ -38,7 +53,7 @@ function NewsCard({
         {isSavedPage ? (
           <button
             className="card__like-btn card__like-btn_delete"
-            onClick={() => onDelete(article)}
+            onClick={handleDelete}
           ></button>
         ) : (
           <button
@@ -59,17 +74,20 @@ function NewsCard({
       <div className="card__content">
         <p className="card__date">{formatDate(article.publishedAt)}</p>{" "}
         <h4
+          ref={titleRef}
           className={`card__title ${isExpanded ? "card__title--expanded" : ""}`}
         >
           {article.title}
         </h4>
-        {/* <button
-          className="card__read-more"
-          onClick={() => setIsExpanded((prev) => !prev)}
-        >
-          {isExpanded ? "Show less" : "Read more"}
-        </button> */}
         <p className="card__info">{article.description}</p>
+        {isTruncated && (
+          <button
+            className="card__read-more"
+            onClick={() => setIsExpanded((prev) => !prev)}
+          >
+            {isExpanded ? "Show less" : "Read more"}
+          </button>
+        )}
         <p className="card__source-name">{article.source.name}</p>
       </div>
     </li>

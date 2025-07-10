@@ -11,9 +11,16 @@
   background-image: none;
 }
 
-/* .header_mobile-open {
+.header_mobile-open {
+  background-image: none;
   background-color: rgba(26, 27, 34, 1);
-} */
+}
+
+.header_saved-mobile {
+  background-image: none;
+  background-color: rgba(26, 27, 34, 1);
+  color: azure;
+}
 
 /* @media (max-width: 320px) {
   .header_mobile-open {

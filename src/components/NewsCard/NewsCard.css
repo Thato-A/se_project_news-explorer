@@ -5,7 +5,7 @@
 
 .card {
   width: 350px;
-  height: 576px;
+  height: 620px;
   border-radius: 10px;
   list-style-type: none;
   position: relative;
@@ -49,6 +49,9 @@
   top: 20px;
   right: 65px;
   visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card__like-btn:hover + .card__tooltip {
@@ -132,5 +135,12 @@
 
   .card__content {
     padding: 0 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .card {
+    width: 270px;
+    height: 500px;
   }
 }

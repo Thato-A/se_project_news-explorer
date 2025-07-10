@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import LogoutLight from "../../assets/logout-light.svg";
@@ -57,7 +57,7 @@ function HamburgerMenu({
 
               <li>
                 <button className="hamburger__logout" onClick={handleLogout}>
-                  Lily
+                  {currentUser.username}
                   <img
                     src={LogoutLight}
                     alt="logout icon"

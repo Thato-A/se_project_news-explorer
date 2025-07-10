@@ -94,13 +94,18 @@ function App() {
 
     if (isArticleSaved(article)) return;
 
-    // setSavedArticles((prev) => [...prev, article]);
-
     const updatedArticles = [...savedArticles, article];
     setSavedArticles(updatedArticles);
 
     localStorage.setItem("savedArticles", JSON.stringify(updatedArticles));
     console.log("Saved to localStorage:", updatedArticles);
+  };
+
+  const handleDeleteArticle = (articleToDelete) => {
+    const updatedArticles = savedArticles.filter(
+      (article) => article.id !== articleToDelete.id
+    );
+    setSavedArticles(updatedArticles);
   };
 
   const location = useLocation();
@@ -148,6 +153,7 @@ function App() {
                     isArticleSaved={isArticleSaved}
                     isSavedPage={isSavedPage}
                     isLoggedIn={isLoggedIn}
+                    onDelete={handleDeleteArticle}
                   />
                 </ProtectedRoute>
               }
