@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm/SearchForm";
 import Navigation from "../Navigation/Navigation";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
@@ -12,6 +13,7 @@ function Header({
   isSavedPage,
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header
@@ -32,7 +34,11 @@ function Header({
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isSavedPage={isSavedPage}
       />
-      {location.pathname === "/" ? <SearchForm onSearch={onSearch} /> : ""}
+      {location.pathname === "/" || "#/" ? (
+        <SearchForm onSearch={onSearch} />
+      ) : (
+        ""
+      )}
     </header>
   );
 }

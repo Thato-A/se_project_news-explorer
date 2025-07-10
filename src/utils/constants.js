@@ -8,3 +8,6 @@ export const newsApiBaseUrl =
 export function generateFakeId() {
   return Math.random().toString(36).slice(2, 10);
 }
+
+export const base =
+  process.env.NODE_ENV === "production" ? "/se_project_news-explorer/" : "/";
