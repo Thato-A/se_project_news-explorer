@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/Thato-A/se_project_news-explorer",
+  "homepage": "https://thato-a.github.io/se_project_news-explorer/",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",

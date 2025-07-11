@@ -19,7 +19,9 @@ function SavedArticles({
         <h3 className="articles__heading">
           {currentUser.username}, you have {savedArticles.length} saved articles
         </h3>
-        <p className="articles__keywords">By keywords:</p>
+        <p className="articles__keywords">
+          By keywords:{savedArticles.source.name}
+        </p>
       </div>
       <div className="card__list-container">
         <ul className="card__list">

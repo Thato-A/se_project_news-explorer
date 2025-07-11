@@ -34,11 +34,7 @@ function Header({
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isSavedPage={isSavedPage}
       />
-      {location.pathname === "/" || "#/" ? (
-        <SearchForm onSearch={onSearch} />
-      ) : (
-        ""
-      )}
+      {location.pathname === "/" ? <SearchForm onSearch={onSearch} /> : ""}
     </header>
   );
 }
