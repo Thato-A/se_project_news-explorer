@@ -7,7 +7,7 @@ import "./HamburgerMenu.css";
 function HamburgerMenu({
   isLoggedIn,
   onSignOut,
-  onRegisterClick,
+  onLoginClick,
   isMobileMenuOpen,
   setIsMobileMenuOpen,
   isSavedPage,
@@ -22,7 +22,7 @@ function HamburgerMenu({
   };
 
   return (
-    <div className="hamburger__container">
+    <div className="hamburger">
       <button
         className={`hamburger__icon ${
           isSavedPage ? "hamburger__icon_dark" : ""
@@ -41,7 +41,7 @@ function HamburgerMenu({
                   className="hamburger__link"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <p>Home</p>
+                  Home
                 </Link>
               </li>
 
@@ -51,7 +51,7 @@ function HamburgerMenu({
                   className="hamburger__link"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <p>Saved articles</p>
+                  Saved articles
                 </Link>
               </li>
 
@@ -77,7 +77,7 @@ function HamburgerMenu({
                   className="hamburger__login"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    onRegisterClick();
+                    onLoginClick();
                   }}
                 >
                   Sign In

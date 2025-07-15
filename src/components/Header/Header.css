@@ -19,7 +19,7 @@
 .header_saved-mobile {
   background-image: none;
   background-color: rgba(26, 27, 34, 1);
-  color: azure;
+  color: rgba(225, 225, 225, 1);
 }
 
 /* @media (max-width: 320px) {

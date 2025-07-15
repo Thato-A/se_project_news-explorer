@@ -1,15 +1,10 @@
-.hamburger__container {
+.hamburger {
   position: relative;
   display: none;
 }
 
 @media (max-width: 320px) {
   .hamburger {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-
-  .hamburger__container {
     display: block;
   }
 

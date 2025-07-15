@@ -51,9 +51,9 @@ function SearchResults({
   }, []);
 
   return (
-    <div className="search__results">
-      <h2 className="search__results-title">Search Results</h2>
-      <ul className="search__results-cards">
+    <div className="search-form">
+      <h2 className="search-form__title">Search Results</h2>
+      <ul className="search-form__cards">
         {articlesToShow.map((article) => (
           <NewsCard
             key={article.url}
@@ -65,7 +65,7 @@ function SearchResults({
         ))}
       </ul>
       {hasMoreArticles && (
-        <button className="search__results-btn" onClick={onShowMore}>
+        <button className="search-form__btn" onClick={onShowMore}>
           Show more
         </button>
       )}

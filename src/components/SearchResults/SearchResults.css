@@ -3,25 +3,25 @@
   src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
 }
 
-.search__results {
+.search-form {
   padding: 40px 104px;
   background-color: rgba(245, 246, 247, 1);
 }
 
-.search__results-title {
+.search-form__title {
   font-family: "Roboto-slab", "Times New Roman", Times, serif;
   margin: 26px 0;
   font-size: 40px;
 }
 
-.search__results-cards {
+.search-form__cards {
   display: flex;
   gap: 16px;
   padding: 12px 0 0;
   flex-wrap: wrap;
 }
 
-.search__results-btn {
+.search-form__btn {
   display: flex;
   margin: 56px auto 20px;
   width: 210px;
@@ -33,15 +33,15 @@
 }
 
 @media (max-width: 768px) {
-  .search__results {
+  .search-form {
     padding: 40px;
   }
 
-  .search__results-title {
+  .search-form__title {
     font-size: 30px;
   }
 
-  .search__results-cards {
+  .search-form__cards {
     gap: 8px;
   }
 }

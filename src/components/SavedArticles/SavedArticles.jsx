@@ -11,6 +11,7 @@ function SavedArticles({
   onDelete,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
+  console.log(savedArticles);
 
   return (
     <>
@@ -19,9 +20,7 @@ function SavedArticles({
         <h3 className="articles__heading">
           {currentUser.username}, you have {savedArticles.length} saved articles
         </h3>
-        <p className="articles__keywords">
-          By keywords:{savedArticles.source.name}
-        </p>
+        <p className="articles__keywords">By keywords:{savedArticles.source}</p>
       </div>
       <div className="card__list-container">
         <ul className="card__list">

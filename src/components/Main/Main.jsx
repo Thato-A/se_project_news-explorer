@@ -22,21 +22,23 @@ function Main({
 
   return (
     <>
-      <SearchResults
-        articles={articles}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-        hasSearched={hasSearched}
-        savedArticles={savedArticles}
-        setSavedArticles={setSavedArticles}
-        isArticleSaved={isArticleSaved}
-        onSave={onSave}
-        error={error}
-        visibleCards={visibleCards}
-        onShowMore={handleShowMore}
-        isLoggedIn={isLoggedIn}
-      />
-      <About />
+      <main>
+        <SearchResults
+          articles={articles}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          hasSearched={hasSearched}
+          savedArticles={savedArticles}
+          setSavedArticles={setSavedArticles}
+          isArticleSaved={isArticleSaved}
+          onSave={onSave}
+          error={error}
+          visibleCards={visibleCards}
+          onShowMore={handleShowMore}
+          isLoggedIn={isLoggedIn}
+        />
+        <About />
+      </main>
     </>
   );
 }

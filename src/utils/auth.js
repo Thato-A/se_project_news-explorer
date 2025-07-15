@@ -2,6 +2,13 @@ import { generateFakeId } from "./constants";
 
 let currentUser = null;
 
+const TEST_USER = {
+  _id: generateFakeId(),
+  username: "Liam",
+  email: "liam@mail.com",
+  password: "L1234567",
+};
+
 export const authorize = (email, password) => {
   return new Promise((resolve) => {
     currentUser = {
@@ -28,15 +35,17 @@ export const register = ({ username, email, password }) => {
 };
 
 export const login = ({ email, password }) => {
-  return new Promise((resolve) => {
-    if (
+  return new Promise((resolve, reject) => {
+    if (email === TEST_USER.email && password === TEST_USER.password) {
+      resolve({ token: "fake-token", user: TEST_USER });
+    } else if (
       currentUser &&
       currentUser.email === email &&
       currentUser.password === password
     ) {
       resolve({ token: "fake-token" });
     } else {
-      resolve({ token: "fake-token" });
+      reject({ message: "Invalid credentials" });
     }
   });
 };

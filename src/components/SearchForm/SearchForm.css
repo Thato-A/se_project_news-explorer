@@ -64,6 +64,15 @@
   }
 }
 
+@media (max-width: 451px) {
+  .search__container {
+  }
+
+  .search__input {
+    width: 300px;
+  }
+}
+
 @media (max-width: 320px) {
   .search__container {
     width: 285px;

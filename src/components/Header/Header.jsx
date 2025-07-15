@@ -7,7 +7,7 @@ import "./Header.css";
 
 function Header({
   isLoggedIn,
-  onRegisterClick,
+  onLoginClick,
   onSignOut,
   onSearch,
   isSavedPage,
@@ -15,21 +15,23 @@ function Header({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  console.log("savedPage?", isSavedPage, "mobileMenuOpen?", isMobileMenuOpen);
   return (
     <header
-      className={`header ${isSavedPage ? "header_saved" : ""}${
+      className={`header ${isSavedPage ? "header_saved" : ""} ${
         isMobileMenuOpen ? "header_mobile-open" : ""
-      }${isSavedPage && isMobileMenuOpen ? "header_saved-mobile" : ""}`}
+      } ${isSavedPage && isMobileMenuOpen ? "header_saved-mobile" : ""}`}
     >
       <Navigation
         isLoggedIn={isLoggedIn}
-        onRegisterClick={onRegisterClick}
+        onLoginClick={onLoginClick}
         onSignOut={onSignOut}
+        isMobileMenuOpen={isMobileMenuOpen}
       />
       <HamburgerMenu
         isLoggedIn={isLoggedIn}
         onSignOut={onSignOut}
-        onRegisterClick={onRegisterClick}
+        onLoginClick={onLoginClick}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isSavedPage={isSavedPage}

@@ -14,7 +14,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
@@ -117,7 +117,7 @@ function App() {
         <div className="page__content">
           <Header
             isLoggedIn={isLoggedIn}
-            onRegisterClick={openRegistrationModal}
+            onLoginClick={openLoginModal}
             onSignOut={handleSignOut}
             onSearch={handleSearch}
             isSavedPage={isSavedPage}

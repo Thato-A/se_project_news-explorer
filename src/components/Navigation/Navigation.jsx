@@ -5,24 +5,28 @@ import LogoutDark from "../../assets/logout.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./Navigation.css";
 
-function Navigation({ isLoggedIn, onRegisterClick, onSignOut }) {
+function Navigation({ isLoggedIn, onLoginClick, onSignOut, isMobileMenuOpen }) {
   const { currentUser } = useContext(CurrentUserContext);
   const location = useLocation();
   const path = location.pathname;
   const isSavedPage = path === "/saved-articles";
 
   return (
-    <div className="nav">
+    <nav className="nav">
       <div
         className={`nav__container ${
           isSavedPage ? "nav__container_saved" : ""
         }`}
       >
-        <p className={`nav__logo ${isSavedPage ? "nav_saved" : ""}`}>
+        <p
+          className={`nav__logo ${
+            isSavedPage && !isMobileMenuOpen ? "nav_saved" : ""
+          }`}
+        >
           NewsExplorer
         </p>
 
-        <nav className="nav__links">
+        <div className="nav__links">
           {isLoggedIn ? (
             <ul className="nav__link-container">
               <li>
@@ -32,8 +36,7 @@ function Navigation({ isLoggedIn, onRegisterClick, onSignOut }) {
                     path === "/" ? "nav__link--active" : ""
                   }`}
                 >
-                  {" "}
-                  <p>Home</p>
+                  Home
                 </Link>
               </li>
 
@@ -41,10 +44,10 @@ function Navigation({ isLoggedIn, onRegisterClick, onSignOut }) {
                 <Link
                   to="/saved-articles"
                   className={`nav__link ${
-                    isSavedPage ? "nav_saved nav__link--active" : ""
+                    isSavedPage ? "nav_saved nav__link--activated" : ""
                   }`}
                 >
-                  <p> Saved articles </p>
+                  Saved articles
                 </Link>
               </li>
 
@@ -71,15 +74,15 @@ function Navigation({ isLoggedIn, onRegisterClick, onSignOut }) {
               </li>
 
               <li>
-                <button className="nav__login" onClick={onRegisterClick}>
+                <button className="nav__login" onClick={onLoginClick}>
                   Sign In
                 </button>
               </li>
             </ul>
           )}
-        </nav>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 }
 export default Navigation;
