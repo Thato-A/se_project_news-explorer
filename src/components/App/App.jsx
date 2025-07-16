@@ -102,10 +102,9 @@ function App() {
   };
 
   const handleDeleteArticle = (articleToDelete) => {
-    const updatedArticles = savedArticles.filter(
-      (article) => article.id !== articleToDelete.id
+    setSavedArticles((prevArticles) =>
+      prevArticles.filter((article) => article.url !== articleToDelete.url)
     );
-    setSavedArticles(updatedArticles);
   };
 
   const location = useLocation();

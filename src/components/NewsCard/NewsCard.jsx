@@ -9,9 +9,12 @@ function NewsCard({
   isSavedPage,
   onDelete,
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isTruncated, setIsTruncated] = useState(false);
   const titleRef = useRef(null);
+  const descRef = useRef(null);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isTitleTruncated, setIsTitleTruncated] = useState(false);
+  const [isDescTruncated, setIsDescTruncated] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -35,11 +38,15 @@ function NewsCard({
   };
 
   useEffect(() => {
-    const el = titleRef.current;
-    if (el) {
-      setIsTruncated(el.scrollHeight > el.clientHeight);
-    }
-  }, [article.title, isExpanded]);
+    const checkOverflow = (el) => el && el.scrollHeight > el.clientHeight;
+
+    requestAnimationFrame(() => {
+      setIsTitleTruncated(checkOverflow(titleRef.current));
+      setIsDescTruncated(checkOverflow(descRef.current));
+    });
+  }, [article.title, article.description, isExpanded]);
+
+  const shouldShowButton = isTitleTruncated || isDescTruncated;
 
   return (
     <li className="card">
@@ -72,11 +79,31 @@ function NewsCard({
       </div>
 
       <div className="card__content">
-        <p className="card__date">{formatDate(article.publishedAt)}</p>{" "}
-        <h4 ref={titleRef} className="card__title">
+        <p className="card__date">{formatDate(article.publishedAt)}</p>
+
+        <h4
+          ref={titleRef}
+          className={`card__title ${isExpanded ? "card__title--expanded" : ""}`}
+        >
           {article.title}
         </h4>
-        <p className="card__info">{article.description}</p>
+
+        <p
+          ref={descRef}
+          className={`card__info ${isExpanded ? "card__info--expanded" : ""}`}
+        >
+          {article.description}
+        </p>
+
+        {shouldShowButton && (
+          <button
+            className="card__read-more"
+            onClick={() => setIsExpanded((prev) => !prev)}
+          >
+            {isExpanded ? "Show less" : "Read more"}
+          </button>
+        )}
+
         <p className="card__source-name">{article.source.name}</p>
       </div>
     </li>

@@ -3,10 +3,6 @@
   src: url("../../assets/fonts/roboto-400.woff") format("woff");
 }
 
-.page {
-  outline: 1px solid red;
-}
-
 .page__content {
   background-color: rgba(255, 255, 255, 1);
   font-family: Roboto, sans-serif;
