@@ -98,10 +98,10 @@
   color: rgba(182, 188, 191, 1);
 }
 
-@media (max-width: 786px) {
+@media (max-width: 768px) {
   .card {
-    width: 210px;
-    height: 450px;
+    width: 224px;
+    height: 420px;
   }
 
   .card__image {

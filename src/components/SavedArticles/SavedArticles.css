@@ -28,6 +28,7 @@
   background-color: rgba(245, 246, 247, 1);
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card__list {
@@ -49,6 +50,11 @@
 
   .articles__heading {
     margin: 0;
+  }
+
+  .card__list {
+    gap: 8px;
+    padding: 32px 0;
   }
 }
 

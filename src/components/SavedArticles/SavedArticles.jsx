@@ -11,7 +11,6 @@ function SavedArticles({
   onDelete,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
-  console.log(savedArticles);
 
   return (
     <>

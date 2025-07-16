@@ -26,7 +26,7 @@ function HamburgerMenu({
       <button
         className={`hamburger__icon ${
           isSavedPage ? "hamburger__icon_dark" : ""
-        }`}
+        } ${isSavedPage && isMobileMenuOpen ? "hamburger__icon_light" : ""}`}
         onClick={toggleMenu}
       >
         {isMobileMenuOpen ? "✕" : "☰"}

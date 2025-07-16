@@ -5,6 +5,8 @@
 
 .header {
   background-image: url("../../assets/Header-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .header_saved {

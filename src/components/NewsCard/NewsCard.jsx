@@ -73,21 +73,10 @@ function NewsCard({
 
       <div className="card__content">
         <p className="card__date">{formatDate(article.publishedAt)}</p>{" "}
-        <h4
-          ref={titleRef}
-          className={`card__title ${isExpanded ? "card__title--expanded" : ""}`}
-        >
+        <h4 ref={titleRef} className="card__title">
           {article.title}
         </h4>
         <p className="card__info">{article.description}</p>
-        {isTruncated && (
-          <button
-            className="card__read-more"
-            onClick={() => setIsExpanded((prev) => !prev)}
-          >
-            {isExpanded ? "Show less" : "Read more"}
-          </button>
-        )}
         <p className="card__source-name">{article.source.name}</p>
       </div>
     </li>

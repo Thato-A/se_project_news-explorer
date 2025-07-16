@@ -8,11 +8,12 @@
   flex-wrap: wrap;
   gap: 40px;
   padding: 50px 104px;
+  justify-content: center;
 }
 
 .about__image {
-  width: 320px;
-  height: 350px;
+  width: 464px;
+  height: 480px;
   border-radius: 100%;
 }
 
@@ -20,13 +21,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 600px;
+  max-width: 700px;
   overflow-wrap: break-word;
 }
 
 .about__title {
   font-family: "Roboto-slab", "Times New Roman", serif;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .about__paragraph {
@@ -58,7 +59,7 @@
   }
 
   .about__image {
-    width: 260px;
+    width: 240px;
   }
 
   .about__container {
