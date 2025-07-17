@@ -59,6 +59,14 @@ function NewsCard({
         className="card__image"
       />
 
+      {isSavedPage && article.keyword && (
+        <p className="card__keyword">
+          <strong>
+            {article.keyword.charAt(0).toUpperCase() + article.keyword.slice(1)}
+          </strong>
+        </p>
+      )}
+
       <div className="card__buttons">
         {isSavedPage ? (
           <button
@@ -77,7 +85,7 @@ function NewsCard({
         {!isLoggedIn ? (
           <div className="card__tooltip">Sign in to save article</div>
         ) : isSavedPage ? (
-          <div className="card__tooltip">Remove article</div>
+          <div className="card__tooltip-remove">Remove article</div>
         ) : null}
       </div>
 

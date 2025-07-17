@@ -2,12 +2,10 @@ import { newsApiBaseUrl } from "./constants";
 import { APIkey } from "./constants";
 
 async function fetchNews(keyword) {
-  // Calculate date range (last 7 days)
   const today = new Date();
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(today.getDate() - 7);
 
-  // Format dates as YYYY-MM-DD
   const formatDate = (date) => date.toISOString().split("T")[0];
 
   const params = new URLSearchParams({
@@ -27,6 +25,19 @@ async function fetchNews(keyword) {
   return res.json();
 }
 
+async function fetchNewsWithKeyword(keyword) {
+  try {
+    const data = await fetchNews(keyword);
+    return data.articles.map((article) => ({
+      ...article,
+      keyword,
+    }));
+  } catch (error) {
+    console.error("fetchNewsWithKeyword error:", error);
+    return [];
+  }
+}
+
 function saveArticle(article) {
   // API call to save articles
   return request(`${newsApiBaseUrl}/articles`, {
@@ -36,4 +47,4 @@ function saveArticle(article) {
   });
 }
 
-export { fetchNews, saveArticle };
+export { fetchNews, fetchNewsWithKeyword, saveArticle };

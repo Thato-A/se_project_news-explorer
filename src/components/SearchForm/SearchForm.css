@@ -3,6 +3,10 @@
   src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
 }
 
+.search__form {
+  padding: 40px;
+}
+
 .search__container {
   margin: 0 auto;
   width: 600px;
@@ -39,7 +43,7 @@
   height: 50px;
   border-radius: 100px;
   position: absolute;
-  left: 410px;
+  left: 418px;
   background-color: rgba(47, 113, 229, 1);
   border: none;
   color: rgba(255, 255, 255, 1);
@@ -59,8 +63,8 @@
   }
 
   .search__btn {
-    bottom: 80px;
-    left: 310px;
+    bottom: 120px;
+    left: 348px;
   }
 }
 

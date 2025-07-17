@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
-import { fetchNews } from "../../utils/api";
+import { fetchNewsWithKeyword } from "../../utils/api";
 import { checkToken, register, login } from "../../utils/auth";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -62,20 +62,21 @@ function App() {
     navigate("/");
   };
 
-  const handleSearch = async (url) => {
+  const handleSearch = async (keyword) => {
     setIsLoading(true);
     setError("");
     setHasSearched(true);
 
     try {
-      const data = await fetchNews(url);
+      const articles = await fetchNewsWithKeyword(keyword);
 
-      if (data.articles && data.articles.length > 0) {
-        setArticles(data.articles);
+      if (articles.length > 0) {
+        setArticles(articles);
       } else {
         setArticles([]);
       }
     } catch (err) {
+      console.error("Search error:", err);
       setError(
         "Sorry, something went wrong during the request. Please try again later."
       );

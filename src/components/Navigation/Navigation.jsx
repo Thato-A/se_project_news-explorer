@@ -76,9 +76,7 @@ function Navigation({
             </ul>
           ) : (
             <ul className="nav__link-container">
-              <li className="nav__link">
-                <p>Home</p>
-              </li>
+              <li className="nav__link">Home</li>
 
               <li>
                 <button className="nav__login" onClick={onLoginClick}>

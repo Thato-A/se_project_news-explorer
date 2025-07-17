@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
+  z-index: 997;
   display: none;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .hamburger {
-  position: fixed;
+  position: relative;
   top: 91px;
   left: 0;
   right: 0;
@@ -52,7 +52,7 @@
 
   .hamburger__icon {
     position: absolute;
-    bottom: 28px;
+    bottom: 118px;
     right: 11px;
     font-size: 28px;
     background: none;
@@ -71,7 +71,7 @@
 
   .hamburger__menu {
     position: absolute;
-    top: 0;
+    top: -90px;
     right: 0;
     background-color: rgba(26, 27, 34, 1);
     padding: 12px;
@@ -85,6 +85,7 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
+    gap: 20px;
   }
 
   .hamburger__link {
@@ -106,6 +107,6 @@
 
 @media (max-width: 320px) {
   .hamburger__icon {
-    bottom: 41px;
+    bottom: 124px;
   }
 }

@@ -29,16 +29,16 @@
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
   border-bottom: 4px solid transparent;
-  padding-bottom: 25px;
+  padding-bottom: 22px;
   transition: border-bottom 0.3s ease;
 }
 
 .nav__link--active {
-  border-bottom: 2px solid rgba(255, 255, 255, 1);
+  border-bottom: 3px solid rgba(255, 255, 255, 1);
 }
 
 .nav__link--activated {
-  border-bottom: 2px solid rgba(26, 27, 34, 1);
+  border-bottom: 3px solid rgba(26, 27, 34, 1);
 }
 
 .nav_saved {

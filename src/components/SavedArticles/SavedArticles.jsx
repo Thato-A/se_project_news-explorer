@@ -34,15 +34,24 @@ function SavedArticles({
         {uniqueKeywords.length > 0 && (
           <p className="articles__keywords">
             By keywords:&nbsp;
-            {visibleKeywords.join(", ")}
-            {uniqueKeywords.length > 2 && !showAllKeywords && (
+            {visibleKeywords.map((word, index) => (
+              <strong key={index}>
+                {word.charAt(0).toUpperCase() + word.slice(1)}
+                {index < visibleKeywords.length - 1 ? ", " : ""}
+              </strong>
+            ))}
+            {uniqueKeywords.length > 2 && (
               <>
-                &nbsp;and{" "}
+                &nbsp;{" "}
                 <button
                   className="articles__toggle"
-                  onClick={() => setShowAllKeywords(true)}
+                  onClick={() => setShowAllKeywords(!showAllKeywords)}
                 >
-                  {remainingCount} other{remainingCount > 1 ? "s" : ""}
+                  {showAllKeywords
+                    ? "Show fewer"
+                    : `and ${remainingCount} other${
+                        remainingCount > 1 ? "s" : ""
+                      }`}
                 </button>
               </>
             )}
@@ -50,7 +59,11 @@ function SavedArticles({
         )}
       </div>
       <div className="card__list-container">
-        <ul className="card__list">
+        <ul
+          className={`card__list ${
+            savedArticles.length < 3 ? "card__list--left" : ""
+          }`}
+        >
           {savedArticles.map((article) => (
             <NewsCard
               key={article.url}
