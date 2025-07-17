@@ -15,6 +15,7 @@ function NewsCard({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isTitleTruncated, setIsTitleTruncated] = useState(false);
   const [isDescTruncated, setIsDescTruncated] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -46,7 +47,9 @@ function NewsCard({
     });
   }, [article.title, article.description, isExpanded]);
 
-  const shouldShowButton = isTitleTruncated || isDescTruncated;
+  useEffect(() => {
+    if (isTitleTruncated || isDescTruncated) setShowButton(true);
+  }, [isDescTruncated, isTitleTruncated]);
 
   return (
     <li className="card">
@@ -95,7 +98,7 @@ function NewsCard({
           {article.description}
         </p>
 
-        {shouldShowButton && (
+        {showButton && (
           <button
             className="card__read-more"
             onClick={() => setIsExpanded((prev) => !prev)}

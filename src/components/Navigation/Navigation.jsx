@@ -3,9 +3,16 @@ import { Link, useLocation } from "react-router-dom";
 import LogoutLight from "../../assets/logout-light.svg";
 import LogoutDark from "../../assets/logout.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import "./Navigation.css";
 
-function Navigation({ isLoggedIn, onLoginClick, onSignOut, isMobileMenuOpen }) {
+function Navigation({
+  isLoggedIn,
+  onLoginClick,
+  onSignOut,
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
+}) {
   const { currentUser } = useContext(CurrentUserContext);
   const location = useLocation();
   const path = location.pathname;
@@ -82,6 +89,15 @@ function Navigation({ isLoggedIn, onLoginClick, onSignOut, isMobileMenuOpen }) {
           )}
         </div>
       </div>
+
+      <HamburgerMenu
+        isLoggedIn={isLoggedIn}
+        onSignOut={onSignOut}
+        onLoginClick={onLoginClick}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+        isSavedPage={isSavedPage}
+      />
     </nav>
   );
 }

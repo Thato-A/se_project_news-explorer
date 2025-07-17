@@ -12,6 +12,9 @@
   font-family: "Roboto-slab", "Times New Roman", Times, serif;
   margin: 26px 0;
   font-size: 40px;
+  width: 415px;
+  justify-content: center;
+  display: flex;
 }
 
 .search-form__cards {
@@ -40,9 +43,24 @@
 
   .search-form__title {
     font-size: 30px;
+    width: 220px;
   }
 
   .search-form__cards {
     gap: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .search-form {
+    padding: 16px;
+  }
+
+  .search-form__title {
+    width: 210px;
+  }
+
+  .search-form__cards {
+    gap: 10px;
   }
 }
