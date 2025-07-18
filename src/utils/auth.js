@@ -37,13 +37,14 @@ export const register = ({ username, email, password }) => {
 export const login = ({ email, password }) => {
   return new Promise((resolve, reject) => {
     if (email === TEST_USER.email && password === TEST_USER.password) {
+      currentUser = TEST_USER;
       resolve({ token: "fake-token", user: TEST_USER });
     } else if (
       currentUser &&
       currentUser.email === email &&
       currentUser.password === password
     ) {
-      resolve({ token: "fake-token" });
+      resolve({ token: "fake-token", user: currentUser });
     } else {
       reject({ message: "Invalid credentials" });
     }
