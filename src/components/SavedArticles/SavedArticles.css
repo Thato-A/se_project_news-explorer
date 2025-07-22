@@ -44,27 +44,27 @@
   background-color: rgba(245, 246, 247, 1);
 }
 
-/* .card__list {
+.card__list {
   padding: 62px 95px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-} */
+}
 
-.card__list {
+/* .card__list {
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
     minmax(300px, 1fr)
   ); /* 3 cards per row at 300px */
-  gap: 20px;
-  justify-content: center; /* center the entire grid */
+/* gap: 20px;
+  justify-content: center; 
   padding: 62px 102px;
-  margin: 0 auto; /* center the container */
-  max-width: 1230px; /* restrict total width so max 3 cards fit */
+  margin: 0 auto; 
+  max-width: 1230px; 
   list-style: none;
-}
+} */
 
 .card__list--left {
   justify-content: flex-start;

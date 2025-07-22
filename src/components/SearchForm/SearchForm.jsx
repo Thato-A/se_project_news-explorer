@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./SearchForm.css";
 function SearchForm({ onSearch }) {
   const [keyword, setKeyword] = useState("");
+
   const submitSearch = (e) => {
     e.preventDefault();
     onSearch(keyword);

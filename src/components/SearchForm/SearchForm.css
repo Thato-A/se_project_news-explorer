@@ -50,6 +50,10 @@
   color: rgba(255, 255, 255, 1);
 }
 
+.search__btn:hover {
+  background-color: rgba(52, 126, 255, 1);
+}
+
 @media (max-width: 768px) {
   .search__container {
     width: 452px;
@@ -60,18 +64,18 @@
   }
 
   .search__input {
-    width: 400px;
+    width: 350px;
   }
 
   .search__btn {
     bottom: 80px;
-    left: 308px;
+    left: 260px;
   }
 }
 
-@media (max-width: 451px) {
+@media (max-width: 500px) {
   .search__container {
-    width: 288px;
+    width: 350px;
   }
 
   .search__title {
@@ -95,7 +99,13 @@
   }
 }
 
-@media (max-width: 342px) {
+@media (max-width: 404px) {
+  .search__container {
+    width: 300px;
+  }
+}
+
+@media (max-width: 355px) {
   .search__container {
     width: 260px;
   }
