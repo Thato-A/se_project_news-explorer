@@ -52,20 +52,6 @@
   gap: 15px;
 }
 
-/* .card__list {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(300px, 1fr)
-  ); /* 3 cards per row at 300px */
-/* gap: 20px;
-  justify-content: center; 
-  padding: 62px 102px;
-  margin: 0 auto; 
-  max-width: 1230px; 
-  list-style: none;
-} */
-
 .card__list--left {
   justify-content: flex-start;
 }
