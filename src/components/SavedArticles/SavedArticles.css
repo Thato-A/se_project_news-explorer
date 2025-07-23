@@ -1,0 +1,128 @@
+@font-face {
+  font-family: Roboto-slab;
+  src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
+}
+
+.articles {
+  padding: 40px 102px;
+  overflow-x: hidden;
+}
+
+.articles__paragraph {
+  color: rgba(26, 27, 34, 0.5);
+  margin: 0 0 28px;
+}
+
+.articles__heading {
+  font-family: "Roboto-slab", "Times New Roman", Times, serif;
+  font-size: 40px;
+  line-height: 46px;
+  width: 530px;
+}
+
+.articles__keywords {
+  margin: 16px 0 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.articles__toggle {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+}
+
+.articles__toggle:hover {
+  color: rgba(26, 27, 34, 0.5);
+}
+
+.card__list-container {
+  padding: 0;
+  background-color: rgba(245, 246, 247, 1);
+}
+
+.card__list {
+  padding: 62px 95px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.card__list--left {
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .articles {
+    padding: 32px 40px;
+  }
+
+  .articles__paragraph {
+    font-size: 14px;
+    margin: 0 0 16px;
+  }
+
+  .articles__heading {
+    margin: 0;
+  }
+
+  .card__list {
+    gap: 8px;
+    padding: 32px 30px;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100%;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .card__list {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100%;
+    padding: 0 10px;
+  }
+} */
+
+/* ≤451px: 1 per row */
+/* @media (max-width: 451px) {
+  .card__list {
+    grid-template-columns: 1fr;
+  }
+} */
+
+@media (max-width: 585px) {
+  .articles {
+    padding: 8px 16px;
+  }
+
+  .articles__paragraph {
+    margin: 8px 0 16px;
+    font-size: 12px;
+  }
+
+  .articles__heading {
+    width: 288px;
+    margin: 0;
+    font-size: 30px;
+  }
+
+  .articles__keywords {
+    width: 288px;
+  }
+
+  .card__list {
+    grid-template-columns: 1fr;
+    padding: 24px 73px;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .card__list {
+    padding: 24px 8px;
+  }
+}

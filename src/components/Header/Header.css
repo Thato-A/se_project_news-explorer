@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Roboto-slab";
+  src: url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
+}
+
+.header {
+  background-image: url("../../assets/Header-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header_saved {
+  background-image: none;
+}
+
+.header_mobile-open {
+  background-image: none;
+  background-color: rgba(26, 27, 34, 1);
+}
+
+.header_saved-mobile {
+  background-image: none;
+  background-color: rgba(26, 27, 34, 1);
+  color: rgba(225, 225, 225, 1);
+}
